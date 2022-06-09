@@ -53,3 +53,26 @@ pypi_test:
 
 pypi:
 	@twine upload dist/* -u $(PYPI_USERNAME)
+
+
+# ----------------------------------
+#      GOOGLE CLOUD PLATFORM
+# ----------------------------------
+
+PROJECT_ID = robo_romeo
+BUCKET_NAME = wagon-data-900-robo_romeo
+REGION=europe-west1
+
+set_project:
+	@gcloud config set project ${PROJECT_ID}
+
+create_bucket:
+	@gsutil mb -l ${REGION} -p ${PROJECT_ID} gs://${BUCKET_NAME}
+
+LOCAL_PATH= XXX
+BUCKET_FOLDER= XXX
+BUCKET_FILE_NAME=$(shell basename ${LOCAL_PATH})
+
+upload_data:
+# @gsutil cp train_1k.csv gs://wagon-ml-my-bucket-name/data/train_1k.csv
+# @gsutil cp ${LOCAL_PATH} gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}
