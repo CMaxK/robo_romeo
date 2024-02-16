@@ -13,7 +13,7 @@ Project exploring the creative abilities of AI: generating captions from images 
 - Applied Object-Oriented Programming (OOP) to design the batch for training dataset.
 - Used +118k images and +500k captions to train model.
 - Built up the scoring function which using doc2vec to transfer sentences into vectors and calculate the cosine similarities to evaluate the performance of image captioning. 
-- Imported open API called GPT-3 to output the beautiful poetry according to information gathered from images. 
+- Imported openai's GPT API to output the beautiful poetry according to information gathered from images. 
 - Developed a website using Streamlit to present both poetry and robot voices.
 - Used Text-to-speech API (Uberduck.io) to provide audio output for poetry
 
