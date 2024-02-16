@@ -61,13 +61,10 @@ class DataPipeline:
         self.encoder_model = model
 
     def prepare_dataset(self):
-
-
         # for loop to append X1,X2,y
         X1,X2,y = [],[],[]
 
         for idx, data in self.df.iterrows():
-
             seq = data["value_tokenized"]
             for i in range(1,len(seq)):
                 X1.append(data["id"])
@@ -77,9 +74,6 @@ class DataPipeline:
         self.X1,self.X2,self.y = X1,X2,y
 
     def encode_all_images(self):
-
-
-
         l_toencode = np.unique(self.X1)
         dic_encoded={}
         for image_name in tqdm(l_toencode):
@@ -93,8 +87,6 @@ class DataPipeline:
                 np.save(open(arr_path, 'wb'),arr)
 
     def load_images_encoded(self, imgs_to_load):
-
-
         l_toencode = np.unique(imgs_to_load)
         dic_encoded={}
         for image_name in l_toencode:
@@ -105,14 +97,12 @@ class DataPipeline:
         for image_name in imgs_to_load:
             features.append(dic_encoded[image_name])
 
-
         final_array = np.array(features)
         return final_array
 
 
     def seq_to_padded(self,seq_to_pad):
         inputs_seq_model = pad_sequences(seq_to_pad,padding='post',maxlen=36)
-
         return inputs_seq_model
 
 
@@ -122,8 +112,6 @@ class DataPipeline:
         return y
 
     def __getitem__(self,idx):
-
-
         imgs_to_load = self.X1[idx * self.batch_size : (idx +1) * self.batch_size]
         x1_batch = self.load_images_encoded(imgs_to_load)
 
