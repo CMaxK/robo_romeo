@@ -47,7 +47,6 @@ def process_data(features, captions):
         img_feature_matrix = features[cap_img][0]
         X1.append(img_feature_matrix)
     X1 = np.array(X1)
-
     X2 = np.array(captions[1]).astype(np.uint32)[:sample]
 
     vocab_size = 7589
